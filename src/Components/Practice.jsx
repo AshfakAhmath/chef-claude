@@ -3,10 +3,10 @@ import React from "react";
 function Practice() {
   const [count, setCount] = React.useState(0);
 
-  const [isGoingOut, setIsGoingOut] = React.useState("Yes");
-  console.log(isGoingOut);
+  const [isGoingOut, setIsGoingOut] = React.useState(true);
+
   function handleClick() {
-    setIsGoingOut((prevValue) => (prevValue === "Yes" ? "No" : "Yes"));
+    setIsGoingOut((prevValue) => !prevValue);
   }
 
   function handleMinus() {
@@ -43,7 +43,7 @@ function Practice() {
       <main>
         <h1 className="title">Do I feel like going out tonight?</h1>
         <button onClick={handleClick} className="value">
-          {isGoingOut}
+          {isGoingOut ? "Yes" : "No"}
         </button>
       </main>
     </>
