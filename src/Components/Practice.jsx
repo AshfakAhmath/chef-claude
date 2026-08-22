@@ -4,9 +4,9 @@ function Practice() {
   const [count, setCount] = React.useState(0);
 
   const [isGoingOut, setIsGoingOut] = React.useState("Yes");
-console.log(isGoingOut);
+  console.log(isGoingOut);
   function handleClick() {
-    setIsGoingOut((prevValue) => (prevValue ? "No" : "Yes"));
+    setIsGoingOut((prevValue) => (prevValue === "Yes" ? "No" : "Yes"));
   }
 
   function handleMinus() {
