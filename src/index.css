@@ -1,4 +1,4 @@
-/* * {
+ * {
     box-sizing: border-box;
 }
 
@@ -149,9 +149,9 @@ main > .value {
     font-size: 2rem;
     font-weight: bold;
     cursor: pointer;
-} */ */
+} */
 
-* {
+/* * {
     box-sizing: border-box;
 }
 
@@ -199,4 +199,4 @@ button:focus {
 p {
     margin-block: 10px;
     font-size: 2rem;
-}
+} */
