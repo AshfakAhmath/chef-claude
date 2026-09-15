@@ -1,20 +1,15 @@
 import React from "react";
 import IngredientsList from "./IngredientsList";
 import ClaudeRecipe from "./ClaudeRecipe";
+import { getRecipeFromOpenai } from "../../ai.js";
 
 function Main() {
-  const [ingredients, setIngredients] = React.useState([
-    "all the main spices",
-    "pasta",
-    "ground beef",
-    "tomato paste",
-  ]);
-  ;
-
-  const [recipeShown, setRecipeShown] = React.useState(false);
-  function handleRecipe() {
-    setRecipeShown((prevRecipeShown) => !prevRecipeShown);
-  }
+  const [ingredients, setIngredients] = React.useState([]);
+  const [recipe, setRecipe] = React.useState("")
+  async function getRecipe() {
+        const recipeMarkdown = await getRecipeFromOpenai(ingredients)
+        setRecipe(recipeMarkdown)
+    }
 
   function handleSubmit(formData) {
     const newIngredient = formData.get("ingredient");
@@ -32,11 +27,13 @@ function Main() {
         <button>Add ingredient</button>
       </form>
 
-      {ingredients.length > 0 && <IngredientsList
-        handleRecipe={handleRecipe}
-        ingredients={ingredients}
-      />}
-      {recipeShown && <ClaudeRecipe />}
+      {ingredients.length > 0 && (
+        <IngredientsList
+          getRecipe={getRecipe}
+          ingredients={ingredients}
+        />
+      )}
+      {recipe && <ClaudeRecipe recipe={recipe} />}
     </main>
   );
 }
