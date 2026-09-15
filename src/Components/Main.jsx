@@ -9,9 +9,7 @@ function Main() {
     "ground beef",
     "tomato paste",
   ]);
-  const listIngrediants = ingredients.map((E) => {
-    return <li>{E}</li>;
-  });
+  ;
 
   const [recipeShown, setRecipeShown] = React.useState(false);
   function handleRecipe() {
@@ -34,12 +32,11 @@ function Main() {
         <button>Add ingredient</button>
       </form>
 
-      <IngredientsList
+      {ingredients.length > 0 && <IngredientsList
         handleRecipe={handleRecipe}
-        listIngrediants={listIngrediants}
         ingredients={ingredients}
-      />
-      <ClaudeRecipe recipeShown={recipeShown} />
+      />}
+      {recipeShown && <ClaudeRecipe />}
     </main>
   );
 }

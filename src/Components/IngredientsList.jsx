@@ -1,24 +1,23 @@
-
-
 function IngredientsList(props) {
+  const listIngrediants = props.ingredients.map((E) => {
+    return <li key={E}>{E}</li>;
+  });
   return (
-    props.ingredients.length > 0 && (
-      <section>
-        <h2>Ingredients on hand:</h2>
-        <ul className="ingredients-list" aria-live="polite">
-          {props.listIngrediants}
-        </ul>
-        {props.ingredients.length > 3 && (
-          <div className="get-recipe-container">
-            <div>
-              <h3>Ready for a recipe?</h3>
-              <p>Generate a recipe from your list of ingredients.</p>
-            </div>
-            <button onClick={props.handleRecipe}>Get a recipe</button>
+    <section>
+      <h2>Ingredients on hand:</h2>
+      <ul className="ingredients-list" aria-live="polite">
+        {listIngrediants}
+      </ul>
+      {props.ingredients.length > 3 && (
+        <div className="get-recipe-container">
+          <div>
+            <h3>Ready for a recipe?</h3>
+            <p>Generate a recipe from your list of ingredients.</p>
           </div>
-        )}
-      </section>
-    )
+          <button onClick={props.handleRecipe}>Get a recipe</button>
+        </div>
+      )}
+    </section>
   );
 }
 
